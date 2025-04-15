@@ -1,0 +1,12 @@
+com\tripfinder\model\ImageDocument.class
+com\tripfinder\crawler\WebCrawler.class
+com\tripfinder\web\ImageSearchServer.class
+com\tripfinder\search\Preprocessor.class
+com\tripfinder\App.class
+com\tripfinder\indexer\InvertedIndex$Posting.class
+com\tripfinder\indexer\InvertedIndex.class
+com\tripfinder\search\BM25.class
+com\tripfinder\parser\ImageMetadataParser$1.class
+com\tripfinder\crawler\WebCrawler$ImageMetadata.class
+com\tripfinder\search\SearchEngine.class
+com\tripfinder\parser\ImageMetadataParser.class

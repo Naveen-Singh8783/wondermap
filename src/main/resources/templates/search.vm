@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>WonderMap – Image Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+            background-color: #f7f9fc;
+        }
+
+        .search-bar {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 1rem;
+            background-color: #0057d9;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .results {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: white;
+            padding: 15px;
+            width: 280px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin: 10px 0 5px;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .no-results {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 1.1rem;
+            color: #444;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="search-bar">
+    <form action="/search" method="get">
+        <input type="text" name="query" placeholder="Search by landmark, country, or object..." value="$query" required />
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+#if($results.size() > 0)
+    <div class="results">
+        #foreach($doc in $results)
+            <div class="card">
+                <a href="/downloaded_images/$doc.filename" target="_blank">
+                    <img src="/downloaded_images/$doc.filename" alt="$doc.alt" />
+                </a>
+                <h3>$doc.getCleanTitle()</h3>
+                <p>$doc.getFullText()</p>
+            </div>
+        #end
+    </div>
+#else
+    <div class="no-results">
+        <p>😕 No results found for "<strong>$query</strong>"</p>
+        <p class="quote">“Travel is the only thing you buy that makes you richer.”</p>
+    </div>
+#end
+
+</body>
+</html>
