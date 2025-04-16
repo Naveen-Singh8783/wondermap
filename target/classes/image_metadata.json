@@ -6583,6 +6583,29 @@
   },
   {
     "country": "France",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Tour_Eiffel_Wikimedia_Commons.jpg/250px-Tour_Eiffel_Wikimedia_Commons.jpg",
+    "filename": "France_250px-Tour_Eiffel_Wikimedia_Commons_1.jpg",
+    "alt": "Eiffel Tower at night",
+    "caption": "The Eiffel Tower illuminated at night, a global cultural icon of France.",
+    "pageTitle": "Tourism in France - Wikipedia",
+    "paragraph": "The Eiffel Tower is one of the most visited monuments in the world, located in Paris. It attracts millions of tourists each year and is considered an architectural marvel.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tourism_in_France",
+    "width": 250,
+    "height": 375,
+    "color_profile": {
+      "avg_red": 102.5,
+      "avg_green": 98.3,
+      "avg_blue": 85.7
+    },
+    "detected_objects": [
+      "tower",
+      "person",
+      "sky",
+      "building"
+    ]
+  },  
+  {
+    "country": "France",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Vue_a%C3%A9rienne_du_domaine_de_Versailles_par_ToucanWings_-_Creative_Commons_By_Sa_3.0_-_081.jpg/330px-Vue_a%C3%A9rienne_du_domaine_de_Versailles_par_ToucanWings_-_Creative_Commons_By_Sa_3.0_-_081.jpg",
     "filename": "France_330px-Vue_a_C3_A9rienne_du_domaine_de_Versailles_par_ToucanWings_-_Creative_Commons_By_Sa_3_0_-_081_2.jpg",
     "alt": "",

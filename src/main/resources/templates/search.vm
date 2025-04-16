@@ -7,12 +7,29 @@
         body {
             font-family: Arial, sans-serif;
             margin: 2rem;
-            background-color: #f7f9fc;
+            background: #f7f9fc url('/images/worldmap-light.png') no-repeat center top;
+            background-size: contain;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #0057d9;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #444;
         }
 
         .search-bar {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         input[type="text"] {
@@ -30,11 +47,33 @@
             cursor: pointer;
         }
 
+        .suggestions {
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        .suggestions span {
+            display: inline-block;
+            background-color: #e6f0ff;
+            color: #0057d9;
+            padding: 8px 14px;
+            margin: 5px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .suggestions span:hover {
+            background-color: #cce0ff;
+        }
+
         .results {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
+            margin-top: 20px;
         }
 
         .card {
@@ -44,6 +83,11 @@
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
         }
 
         .card img {
@@ -77,6 +121,11 @@
 </head>
 <body>
 
+<div class="hero">
+    <h1>🌍 WonderMap</h1>
+    <p>Discover the world visually — Search by landmarks, country, nature, and more.</p>
+</div>
+
 <div class="search-bar">
     <form action="/search" method="get">
         <input type="text" name="query" placeholder="Search by landmark, country, or object..." value="$query" required />
@@ -84,23 +133,40 @@
     </form>
 </div>
 
-#if($results.size() > 0)
-    <div class="results">
-        #foreach($doc in $results)
-            <div class="card">
-                <a href="/downloaded_images/$doc.filename" target="_blank">
-                    <img src="/downloaded_images/$doc.filename" alt="$doc.alt" />
-                </a>
-                <h3>$doc.getCleanTitle()</h3>
-                <p>$doc.getFullText()</p>
-            </div>
-        #end
-    </div>
-#else
-    <div class="no-results">
-        <p>😕 No results found for "<strong>$query</strong>"</p>
-        <p class="quote">“Travel is the only thing you buy that makes you richer.”</p>
-    </div>
+<div class="suggestions">
+    <span onclick="quickSearch('Taj Mahal')">Taj Mahal</span>
+    <span onclick="quickSearch('France')">France</span>
+    <span onclick="quickSearch('Elephant')">Elephant</span>
+    <span onclick="quickSearch('Sunset')">Sunset</span>
+</div>
+
+<script>
+    function quickSearch(term) {
+        const input = document.querySelector('input[name="query"]');
+        input.value = term;
+        input.form.submit();
+    }
+</script>
+
+#if($query && $query.trim() != "")
+    #if($results.size() > 0)
+        <div class="results">
+            #foreach($doc in $results)
+                <div class="card">
+                    <a href="/downloaded_images/$doc.filename" target="_blank">
+                        <img src="/downloaded_images/$doc.filename" alt="$doc.alt" />
+                    </a>
+                    <h3>$doc.getCleanTitle()</h3>
+                    <p>$doc.getFullText()</p>
+                </div>
+            #end
+        </div>
+    #else
+        <div class="no-results">
+            <p>😕 No results found for "<strong>$query</strong>"</p>
+            <p class="quote">“Travel is the only thing you buy that makes you richer.”</p>
+        </div>
+    #end
 #end
 
 </body>
