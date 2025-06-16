@@ -48,9 +48,3 @@ Check out the live application here:
 Explore the full source code and documentation:
 👉 https://github.com/Naveen-Singh8783/wondermap
 
-📌 Future Improvements
-Scale dataset with more sources and smarter models.
-
-Add advanced filters, autocomplete, and map-based exploration.
-
-Optimize performance for larger-scale deployments.
